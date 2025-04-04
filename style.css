@@ -1,0 +1,558 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --primary-color: #ff604a;
+  --secondary-color: #10121c;
+  --tertiary-color: #fefff2;
+  --accent-color: #ff8f7d;
+  --text-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--tertiary-color);
+}
+nav {
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  position: sticky;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  background-color: var(--primary-color);
+}
+
+nav .logo {
+  color: var(--tertiary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Container for center elements */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Kategori Dropdown */
+.kategori {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: var(--tertiary-color);
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.kategori:hover {
+  background-color: rgba(254, 255, 242, 0.15);
+}
+
+.kategori::after {
+  content: "\f107";
+  font-family: "Unicons";
+  margin-left: 5px;
+  font-size: 18px;
+}
+
+.kategori-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px var(--shadow-color);
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  width: 180px;
+  color: var(--secondary-color);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.kategori:hover .kategori-list {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.kategori-list li {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.kategori-list li:last-child {
+  border-bottom: none;
+}
+
+.kategori-list li:hover {
+  background: var(--primary-color);
+  color: var(--tertiary-color);
+  padding-left: 20px;
+}
+
+/* Search Box */
+.search-box {
+  height: 45px;
+  width: 350px;
+  position: relative;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  color: #777;
+  transform: translateY(-50%);
+  font-size: 18px;
+}
+
+.search-box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  background-color: var(--tertiary-color);
+  padding: 0 45px 0 45px;
+  font-size: 15px;
+  transition: var(--transition);
+  color: var(--secondary-color);
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+/* User and Cart Icons */
+.cart-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-icon, .user-icon-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(254, 255, 242, 0.15);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.cart-icon:hover, .user-icon-container:hover {
+  background-color: rgba(254, 255, 242, 0.25);
+  transform: translateY(-3px);
+}
+
+.cart-icon a, .user-icon-container a {
+  color: var(--tertiary-color);
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-list {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 5px 20px var(--shadow-color);
+  list-style: none;
+  padding: 0;
+  width: 250px;
+  color: var(--secondary-color);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: var(--transition);
+  z-index: 101;
+  overflow: hidden;
+}
+
+.cart-icon:hover .cart-list {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cart-list li {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.cart-list li:hover {
+  background-color: #f5f5f5;
+}
+
+/* Badge for cart items count */
+.cart-icon .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  /* CSS for the slider */
+.slider-container {
+  width: 90%; /* Mengecilkan lebar slider menjadi 90% dari container */
+  height: 400px;
+  max-width: 1200px; /* Menambahkan lebar maksimum */
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto; /* Menambahkan margin atas dan bawah */
+  border-radius: 12px; /* Menambahkan border radius pada container */
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  transition: 0.3s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px; /* Menambahkan border radius pada gambar */
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.slider-btn i {
+  font-size: 20px;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: white;
+}
+.katalog{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 55px 0;  
+  position: sticky;
+}
+.rekomendasi{
+  width: 300px;
+  height: 100px;
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.rekomendasi:hover{
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.etalase{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 55px 0;
+}
+.produk{
+  width: 200px;
+  height: 300px;
+  background-color: var(--tertiary-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  cursor: pointer;
+}
+.produk img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+.produk h3{
+  font-size: 18px;
+  font-weight: 500;
+  margin: auto;
+}
+.produk h4{
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px 10px;
+}
+.produk h5{
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0px 10px;
+  color: #6e6e6e;
+}
+.produk p{
+  font-size: 12px;
+  margin: 5px 10px;
+  font-weight: bold;
+  color: #999999;
+}
+.produk:hover{
+  transform: scale(1.05);
+}
+
+.btn-memuat{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 55px 0;
+}
+.btn-memuat a{
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.btn-memuat a:hover{
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+footer {
+  background-color: var(--secondary-color);
+  padding: 40px 0 20px;
+  width: 100%;
+  color: var(--tertiary-color);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 30px;
+  padding-right: 20px;
+}
+
+.footer-section h5 {
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(254, 255, 242, 0.7);
+}
+
+.social-icon {
+  display: flex;
+  list-style: none;
+  margin-top: 15px;
+}
+
+.social-icon li {
+  margin-right: 15px;
+}
+
+.social-icon li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--tertiary-color);
+  font-size: 20px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.social-icon li .link {
+  background: var(--primary-color);
+}
+
+.social-icon li .twitter {
+  background: #1da1f2;
+}
+
+.social-icon li .instagram {
+  background-image: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+}
+
+.social-icon li .youtube {
+  background: #ff0000;
+}
+
+.social-icon li a:hover {
+  color: var(--secondary-color);
+  background: var(--tertiary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(254, 255, 242, 0.1);
+  margin: 20px 0;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 20px;
+  width: 100%;
+  font-size: 14px;
+  color: rgba(254, 255, 242, 0.6);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  nav {
+      padding: 0 3%;
+  }
+  
+  .search-box {
+      width: 250px;
+  }
+  
+  .nav-center {
+      gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+      padding: 0 15px;
+  }
+  
+  .nav-center {
+      display: none;
+  }
+  
+  .mobile-menu-btn {
+      display: block;
+  }
+  .footer-container {
+    flex-direction: column;
+}
+
+.footer-section {
+    width: 100%;
+    padding-right: 0;
+}
+}
