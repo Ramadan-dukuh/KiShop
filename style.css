@@ -236,15 +236,15 @@ nav .logo {
   align-items: center;
   justify-content: center;
 }
-  /* CSS for the slider */
+/* CSS untuk slider */
 .slider-container {
-  width: 90%; /* Mengecilkan lebar slider menjadi 90% dari container */
-  height: 400px;
-  max-width: 1200px; /* Menambahkan lebar maksimum */
+  width: 90%;
+  height: auto;
+  max-width: 1200px;
   position: relative;
   overflow: hidden;
-  margin: 20px auto; /* Menambahkan margin atas dan bawah */
-  border-radius: 12px; /* Menambahkan border radius pada container */
+  margin: 20px auto;
+  border-radius: 12px;
 }
 
 .slider {
@@ -262,8 +262,9 @@ nav .logo {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px; /* Menambahkan border radius pada gambar */
+  border-radius: 12px;
   object-fit: cover;
+  aspect-ratio: 16/9; /* Maintain aspect ratio */
 }
 
 .slider-btn {
@@ -319,84 +320,110 @@ nav .logo {
 .dot.active {
   background-color: white;
 }
-.katalog{
+
+/* Katalog section */
+.katalog {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  margin: 55px 0;  
+  margin: 30px 0;
   position: sticky;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
-.rekomendasi{
-  width: 300px;
-  height: 100px;
+
+.rekomendasi {
+  width: calc(50% - 15px);
+  height: 80px;
   background-color: var(--primary-color);
   color: var(--tertiary-color);
   border-radius: 12px;
   align-items: center;
   justify-content: center;
   display: flex;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
-.rekomendasi:hover{
+
+.rekomendasi:hover {
   background-color: var(--tertiary-color);
   color: var(--primary-color);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
-.etalase{
+
+/* Product display */
+.etalase {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  margin: 55px 0;
+  margin: 30px 0;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
-.produk{
-  width: 200px;
-  height: 300px;
+
+.produk {
+  width: calc(50% - 15px); /* Tetap 2 kolom bahkan di layar kecil */
+  max-width: 200px;
+  height: auto;
   background-color: var(--tertiary-color);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   cursor: pointer;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
-.produk img{
+
+.produk img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: 12px 12px 0 0;
 }
-.produk h3{
-  font-size: 18px;
-  font-weight: 500;
-  margin: auto;
-}
-.produk h4{
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0px 10px;
-}
-.produk h5{
+
+.produk h3 {
   font-size: 14px;
+  font-weight: 500;
+  margin: 8px auto 3px;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.produk h4 {
+  font-size: 12px;
   font-weight: bold;
-  margin: 0px 10px;
+  margin: 0px 8px;
+}
+
+.produk h5 {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 2px 8px;
   color: #6e6e6e;
 }
-.produk p{
-  font-size: 12px;
-  margin: 5px 10px;
+
+.produk p {
+  font-size: 10px;
+  margin: 2px 8px 8px;
   font-weight: bold;
   color: #999999;
 }
-.produk:hover{
-  transform: scale(1.05);
+
+.produk:hover {
+  transform: scale(1.03);
 }
 
 .btn-memuat{
@@ -547,6 +574,11 @@ footer {
   .mobile-menu-btn {
       display: block;
   }
+  
+  .search-box {
+      width: 200px;
+  }
+  
   .footer-container {
     flex-direction: column;
 }
@@ -555,4 +587,119 @@ footer {
     width: 100%;
     padding-right: 0;
 }
+}
+/* Media Queries for larger screens */
+@media screen and (min-width: 768px) {
+  .rekomendasi {
+    width: calc(25% - 15px);
+    height: 100px;
+    font-size: 18px;
+  }
+  
+  .produk {
+    width: calc(33.33% - 15px);
+  }
+  
+  .slider-container {
+    height: 400px;
+  }
+  
+  .slide img {
+    height: 400px;
+  }
+  
+  .produk h3 {
+    font-size: 16px;
+    margin: 10px auto 5px;
+  }
+  
+  .produk h4 {
+    font-size: 14px;
+  }
+  
+  .produk h5 {
+    font-size: 12px;
+    margin: 4px 8px;
+  }
+  
+  .produk p {
+    font-size: 11px;
+    margin: 2px 8px 8px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .produk {
+    width: calc(25% - 15px);
+  }
+  
+  .produk h3 {
+    font-size: 18px;
+  }
+  
+  .produk h4 {
+    font-size: 16px;
+  }
+  
+  .produk h5 {
+    font-size: 14px;
+  }
+  
+  .produk p {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .produk {
+    width: 200px;
+  }
+  
+  .slider-btn {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .slider-btn i {
+    font-size: 24px;
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 480px) {
+  .rekomendasi {
+    width: calc(50% - 15px); /* Tetap 2 kolom */
+    height: 60px;
+    font-size: 14px;
+  }
+  
+  .produk {
+    width: calc(50% - 15px); /* Tetap 2 kolom */
+    font-size: 12px;
+  }
+  
+  .slider-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .slider-dots .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Untuk layar sangat kecil */
+@media screen and (max-width: 350px) {
+  .produk h3 {
+    font-size: 12px;
+  }
+  
+  .produk h4 {
+    font-size: 11px;
+  }
+  
+  .produk h5, .produk p {
+    font-size: 9px;
+  }
 }
