@@ -99,4 +99,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Start the auto slider
     startAutoSlide();
+
+    
+    const produk = document.querySelectorAll('.produk');
+    produk.forEach((produk) => {
+        produk.addEventListener('click', () => {
+            window.location.href = 'produk.html';
+        });
+    });
 });
